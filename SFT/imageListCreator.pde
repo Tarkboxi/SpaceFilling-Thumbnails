@@ -1,9 +1,17 @@
 void createImageList()
 {
-  for (int i = 0; i < 12 ; i++)
-  {
+  
     PImage newImg;
     newImg = loadImage("page-test.jpg");
+    for (int i = 0; i < 240 ; i++)
+  {
     pdfImageList.add(newImg);
   }
+}
+
+void controlEvent(ControlEvent theEvent) {
+   println("control called");
+   nOfIcons = (int) d1.getValue();
+   windowInitializer();
+   sizeOfIconsCalculator();
 }
