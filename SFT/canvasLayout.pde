@@ -32,14 +32,12 @@ int displayRightBorder = 0;
 int displayTopBorder = 0;
 int displayBottomBorder = 0;
 
-void sizeOfIconsCalculator()
+void windowInitializer()
 {
-  System.out.println("first one");
   screenCenterX = displayWidth / 2;
   screenCenterY = displayHeight / 2;
   calculatedwindowSizeX = (int) ( displayWidth- (displayWidth/20) );
   calculatedwindowSizeY = (int) ( displayHeight - (displayHeight/20) );
-  
   displayLeftBorder = displayWidth - calculatedwindowSizeX;
   displayRightBorder = calculatedwindowSizeX;
                                   
@@ -49,10 +47,8 @@ void sizeOfIconsCalculator()
   float totalArea = ( displayRightBorder - displayLeftBorder ) * (displayBottomBorder - displayTopBorder ) ;
   widthOfIcon = Math.sqrt(totalArea / (aspectRatio * nOfIcons)); // maximum width that an icon can have
   heightOfIcon = widthOfIcon * aspectRatio ; // max height each icon can have
-  
-  while (heightOfIcon > (displayBottomBorder - displayTopBorder) )
+   while (heightOfIcon > (displayBottomBorder - displayTopBorder) )
   {
-    System.out.println ("giant icon, need to reduce size");
     heightOfIcon = heightOfIcon - (heightOfIcon/10);
     widthOfIcon = heightOfIcon / aspectRatio;
   }
@@ -60,22 +56,25 @@ void sizeOfIconsCalculator()
   numberOfColumns = (int) ( (displayRightBorder - displayLeftBorder) / widthOfIcon); // rough initial number of columns
   numberOfRows = (int) ( (displayBottomBorder - displayTopBorder) / heightOfIcon); // rough initial number of rows
   
-  numberOfPotentialCells = numberOfColumns * numberOfRows;  
-  
-  System.out.println ("potential possible icons"+numberOfPotentialCells+" rows : "+numberOfRows+ "number of Columns :"+numberOfColumns);
-  
+  numberOfPotentialCells = numberOfColumns * numberOfRows;   
+}
+
+void sizeOfIconsCalculator()
+{
+ listOfWidths = new ArrayList<Float>();
+ listOfHeights = new ArrayList<Float>();
+ listOfXPositions = new ArrayList<Integer>();
+ listOfYPositions = new ArrayList<Integer>();
   while ( ( numberOfColumns * numberOfRows) < nOfIcons )
   {
     // let's add more columns if possible
     numberOfColumns = numberOfColumns + 1;
     while ( (numberOfColumns * widthOfIcon) > (displayRightBorder - displayLeftBorder) )
     {
-      System.out.println ( "can't add column, reducing icon size");
       widthOfIcon = widthOfIcon * 0.95 ;
       heightOfIcon = widthOfIcon * aspectRatio;
       System.out.println( (numberOfColumns * widthOfIcon)+"   ,   "+(displayRightBorder - displayLeftBorder));
     }
-    System.out.println ( "added a column");
   }
   System.out.println (numberOfColumns+" X "+numberOfRows);
   numberOfPotentialCells = numberOfColumns * numberOfRows;  
@@ -84,7 +83,6 @@ void sizeOfIconsCalculator()
   
   int j = 0;
   int k = 0;
-  System.out.println("number of cells possible:"+numberOfPotentialCells);
   for (int i = 0 ; i< numberOfPotentialCells; i++)
   {
     if ( j < numberOfColumns) // for each column
