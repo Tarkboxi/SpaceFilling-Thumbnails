@@ -9,9 +9,7 @@ void createImageList()
   }
 }
 
-void controlEvent(ControlEvent theEvent) {
-   println("control called");
-   nOfIcons = (int) d1.getValue();
-   windowInitializer();
-   sizeOfIconsCalculator();
+void updateBg()
+{
+  bgImage = loadImage("savedFrame.jpg");
 }
