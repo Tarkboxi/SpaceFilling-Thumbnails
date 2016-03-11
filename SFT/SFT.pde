@@ -4,6 +4,7 @@ float aspectRatio = 1.414;
 import controlP5.*;
 ControlP5 cp5;
 DropdownList d1;
+int currentHoveredIcon = 0;
 
 void setup() {
   size(displayWidth,displayHeight);
@@ -25,7 +26,7 @@ void customize(DropdownList ddl) {
   ddl.setItemHeight(20);
   ddl.setBarHeight(15);
  
-  for (int i=0;i<120;i++) {
+  for (int i=0;i<121;i++) {
     ddl.addItem(""+i, i);
   }
   //ddl.scroll(0);
@@ -44,4 +45,9 @@ void draw() {
     image(pdfImageList.get(i),currentDrawLocation[0],currentDrawLocation[1],currentIconDimension[0], currentIconDimension[1]);
     currentIconNumber = currentIconNumber+1;
   }
+}
+
+void mouseMoved()
+{
+  checkForHit();
 }
