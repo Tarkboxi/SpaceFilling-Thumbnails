@@ -1,7 +1,19 @@
 boolean mouseInside = false;
   
+  
+  
+  
+ void controlEvent(ControlEvent theEvent) {
+   println("control called");
+   nOfIcons = (int) d1.getValue();
+   windowInitializer();
+   sizeOfIconsCalculator();
+}
+
+
  void checkForHit() 
  {
+  fillThumb = false;
   for (int i=0 ; i<nOfIcons; i++)
   {
     float xStart = listOfXPositions.get(i);
@@ -15,6 +27,7 @@ boolean mouseInside = false;
       if (mouseY > yStart && mouseY < ( yStart+currentHeight) )
       {
         currentHoveredIcon = i;
+        fillThumb = true;
       }
     }
   }
