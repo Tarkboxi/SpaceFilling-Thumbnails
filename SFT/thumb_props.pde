@@ -59,3 +59,38 @@ void SpaceFiller()
   }
    
 }
+
+
+void drawTrackedRowsAndColumns()
+{
+      trackedRow = ( ( currentHoveredIcon+1 ) / (numberOfColumns) ) + 1;
+      if ( ( currentHoveredIcon+1 ) % (numberOfColumns) == 0 )
+      {
+        trackedRow = trackedRow-1;
+      }
+      trackedColumn = (currentHoveredIcon+1) - ( (trackedRow-1) * (numberOfColumns) );
+      for (int i=trackedColumn, j=1; i<nOfIcons ; i =(i +(j*numberOfColumns)) )
+      {
+               if(i-1 != currentHoveredIcon)
+               {
+                 tint(220, 220, 255);
+                 image(pdfImageList.get(i-1),listOfXPositions.get(i-1),listOfYPositions.get(i-1),listOfWidths.get(i-1), listOfHeights.get(i-1));
+               }
+               
+      }
+      for (int i = ( (trackedRow-1) *numberOfColumns)+1 ; ( i <= (trackedRow * ( numberOfColumns) ) ) && i <= nOfIcons ; i++)
+      {
+        if(i-1 != currentHoveredIcon)
+        {
+          try
+          {
+            image(pdfImageList.get(i-1),listOfXPositions.get(i-1),listOfYPositions.get(i-1),listOfWidths.get(i-1), listOfHeights.get(i-1));
+          }
+          catch(IndexOutOfBoundsException e)
+          {
+            image(pdfImageList.get(i),listOfXPositions.get(i),listOfYPositions.get(i),listOfWidths.get(i), listOfHeights.get(i));
+          }
+         }
+      }
+      noTint();
+}
