@@ -24,6 +24,9 @@ ArrayList<Integer> listOfXPositions = new ArrayList<Integer>();
 ArrayList<Integer> listOfYPositions = new ArrayList<Integer>();
 ArrayList<Float> listOfWidths = new ArrayList<Float>();
 ArrayList<Float> listOfHeights = new ArrayList<Float>();
+int trackedRow = 0;
+int trackedColumn = 0;
+
 
 
 int displayLeftBorder = 0;
@@ -36,8 +39,10 @@ void windowInitializer()
 {
   screenCenterX = displayWidth / 2;
   screenCenterY = displayHeight / 2;
-  calculatedwindowSizeX = (int) ( displayWidth- (displayWidth/20) );
+  //calculatedwindowSizeX = (int) ( displayWidth- (displayWidth/20) );
   calculatedwindowSizeY = (int) ( displayHeight - (displayHeight/20) );
+  calculatedwindowSizeX = (int) ( displayWidth - (displayWidth*0.02) );
+
   displayLeftBorder = displayWidth - calculatedwindowSizeX;
   displayRightBorder = calculatedwindowSizeX;
                                   
@@ -80,26 +85,44 @@ void sizeOfIconsCalculator()
   numberOfPotentialCells = numberOfColumns * numberOfRows;  
   insertPositionY = (int) ( displayTopBorder+ ( (displayBottomBorder - displayTopBorder)/2 ) - (heightOfIcon/2) );
   insertPositionX = (int) ( displayLeftBorder+( (displayRightBorder - displayLeftBorder)/2 ) - (widthOfIcon/2)  );
-  
+
   int j = 0;
   int k = 0;
+  int horizontalClusterOffset = 0;
+  int verticalClusterOffset = 0;
+  int horizontalOffset = 0;
+  int verticalOffset = 0;
   for (int i = 0 ; i< numberOfPotentialCells; i++)
   {
     if ( j < numberOfColumns) // for each column
     {
-      listOfXPositions.add( (int) ( displayLeftBorder + ( widthOfIcon * j) ) );
+      if (j == (numberOfColumns)/2 )
+      {
+          horizontalClusterOffset = horizontalClusterOffset+50;
+      }
+      listOfXPositions.add( (int) ( displayLeftBorder + ( widthOfIcon * j) ) +horizontalOffset+horizontalClusterOffset );
+    
       listOfWidths.add((float)widthOfIcon);
       listOfHeights.add((float)heightOfIcon);
       j = j+1;
+      horizontalOffset = horizontalOffset+4;
     }
     if( k < numberOfRows)
     {
-      listOfYPositions.add( (int) ( displayTopBorder + ( heightOfIcon * k) ) );
+      listOfYPositions.add( (int) ( displayTopBorder + ( heightOfIcon * k) +verticalOffset+verticalClusterOffset ) );
     }
     if ( j == numberOfColumns)
     {
       j = 0;
+      horizontalClusterOffset = 0;
+      horizontalOffset = 0;
+
       k = k+1;
+      verticalOffset = verticalOffset+6;
+       if (k == numberOfRows/2)
+      {
+        verticalClusterOffset = verticalClusterOffset+50;
+      }
     }
   }
 }
