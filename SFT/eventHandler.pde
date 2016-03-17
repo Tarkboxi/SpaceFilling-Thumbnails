@@ -7,6 +7,7 @@ boolean mouseInside = false;
    drawAgain = true;
    println("control called");
    nOfIcons = (int) d1.getValue();
+ 
    windowInitializer();
    sizeOfIconsCalculator();
 }
