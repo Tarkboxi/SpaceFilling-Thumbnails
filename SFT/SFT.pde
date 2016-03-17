@@ -4,6 +4,8 @@ float aspectRatio = 1.414;
 import controlP5.*;
 ControlP5 cp5;
 DropdownList d1;
+DropdownList d2;
+
 int currentHoveredIcon = 0;
 boolean fillThumb = false;
 float[] filledThumbNail = new float[5];
@@ -21,6 +23,13 @@ void setup() {
   cp5 = new ControlP5(this);
   d1 = cp5.addDropdownList("Pages").setPosition(10, 10);    
   customize(d1);
+  
+    cp5.addButton("switchMode")
+   .setPosition(300,10)
+   .setSize(80,30)
+   .setValue(0)
+   .activateBy(ControlP5.RELEASE);
+   ;
   
   // for the icons
   createImageList();
@@ -51,6 +60,10 @@ void customize(DropdownList ddl) {
   //ddl.scroll(0);
   ddl.setColorBackground(color(120, 120 , 120));
   ddl.setColorActive(color(0, 0, 0));
+}
+public void switchMode()
+{
+  spatialOn = !(spatialOn);
 }
 
 void draw() {
@@ -86,7 +99,10 @@ void draw() {
        {
         background(0);  
         image(bgImage,0,0,displayWidth, displayHeight);
-        drawTrackedRowsAndColumns();
+        if(spatialOn)
+        {
+          drawTrackedRowsAndColumns();
+        }
         image(pdfImageList.get((int)filledThumbNail[4]),filledThumbNail[2],filledThumbNail[3],filledThumbNail[0], filledThumbNail[1]);
         eraseFill = true;
        }
