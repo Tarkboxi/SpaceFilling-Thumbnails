@@ -1,3 +1,4 @@
+boolean spatialOn = false;
 int iconWidth = 0;
 double widthOfIcon;
 double heightOfIcon = widthOfIcon * aspectRatio ;
@@ -96,7 +97,7 @@ void sizeOfIconsCalculator()
   {
     if ( j < numberOfColumns) // for each column
     {
-      if (j == (numberOfColumns)/2 )
+      if (j == (numberOfColumns)/2 && (spatialOn) )
       {
           horizontalClusterOffset = horizontalClusterOffset+50;
       }
@@ -105,7 +106,14 @@ void sizeOfIconsCalculator()
       listOfWidths.add((float)widthOfIcon);
       listOfHeights.add((float)heightOfIcon);
       j = j+1;
-      horizontalOffset = horizontalOffset+4;
+      if (spatialOn)
+      {
+        horizontalOffset = horizontalOffset+4;
+      }
+      else
+      {
+        horizontalOffset = horizontalOffset+2;
+      }
     }
     if( k < numberOfRows)
     {
@@ -116,12 +124,18 @@ void sizeOfIconsCalculator()
       j = 0;
       horizontalClusterOffset = 0;
       horizontalOffset = 0;
-
       k = k+1;
-      verticalOffset = verticalOffset+6;
-       if (k == numberOfRows/2)
+      if(spatialOn)
       {
-        verticalClusterOffset = verticalClusterOffset+50;
+        verticalOffset = verticalOffset+6;
+        if (k == numberOfRows/2)
+        {
+          verticalClusterOffset = verticalClusterOffset+50;
+        }
+      }
+      else
+      {
+        verticalOffset = verticalOffset+2;
       }
     }
   }
