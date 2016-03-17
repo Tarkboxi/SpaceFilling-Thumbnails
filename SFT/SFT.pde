@@ -33,6 +33,7 @@ void setup() {
   {
     int[] currentDrawLocation = drawPositionSetter(currentIconNumber);
     float[] currentIconDimension = sizeRetriever(currentIconNumber);
+    
     image(pdfImageList.get(i),currentDrawLocation[0],currentDrawLocation[1],currentIconDimension[0], currentIconDimension[1]);
     currentIconNumber = currentIconNumber+1;
   }
@@ -67,7 +68,7 @@ void draw() {
        if(refreshScreenshot)
        {
          saveFrame("/home1/grads/masokan/Desktop/processing-project/SpaceFilling-Thumbnails/SFT/data/savedFrame.jpg");
-         delay(350);
+         delay(450);
          updateBg();
          println("loaded new bg");
        }
@@ -85,6 +86,7 @@ void draw() {
        {
         background(0);  
         image(bgImage,0,0,displayWidth, displayHeight);
+        drawTrackedRowsAndColumns();
         image(pdfImageList.get((int)filledThumbNail[4]),filledThumbNail[2],filledThumbNail[3],filledThumbNail[0], filledThumbNail[1]);
         eraseFill = true;
        }
