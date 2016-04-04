@@ -36,6 +36,7 @@ int displayRightBorder = 0;
 int displayTopBorder = 0;
 int displayBottomBorder = 0;
 
+
 void windowInitializer()
 {
   screenCenterX = displayWidth / 2;
@@ -43,6 +44,14 @@ void windowInitializer()
   //calculatedwindowSizeX = (int) ( displayWidth- (displayWidth/20) );
   calculatedwindowSizeY = (int) ( displayHeight - (displayHeight/20) );
   calculatedwindowSizeX = (int) ( displayWidth - (displayWidth*0.02) );
+  if (experimentMode)
+  {
+    calculatedwindowSizeX = (int) ( calculatedwindowSizeX - (displayWidth*previewSliderRatioOfWindow-100) );
+  }
+  else
+  {
+    calculatedwindowSizeX = (int) ( calculatedwindowSizeX - (displayWidth*0.1) );
+  }
 
   displayLeftBorder = displayWidth - calculatedwindowSizeX;
   displayRightBorder = calculatedwindowSizeX;
@@ -101,7 +110,14 @@ void sizeOfIconsCalculator()
       {
           horizontalClusterOffset = horizontalClusterOffset+50;
       }
-      listOfXPositions.add( (int) ( displayLeftBorder + ( widthOfIcon * j) ) +horizontalOffset+horizontalClusterOffset );
+      if(experimentMode)
+      {
+        listOfXPositions.add( 100 + (int) ( displayLeftBorder + ( widthOfIcon * j) ) +horizontalOffset+horizontalClusterOffset );
+      }
+      else
+      {
+        listOfXPositions.add( (int) ( displayLeftBorder + ( widthOfIcon * j) ) +horizontalOffset+horizontalClusterOffset );
+      }
     
       listOfWidths.add((float)widthOfIcon);
       listOfHeights.add((float)heightOfIcon);

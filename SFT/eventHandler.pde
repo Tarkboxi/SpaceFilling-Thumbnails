@@ -4,12 +4,57 @@ boolean mouseInside = false;
   
   
  void controlEvent(ControlEvent theEvent) {
-   drawAgain = true;
-   println("control called");
-   nOfIcons = (int) d1.getValue();
- 
-   windowInitializer();
-   sizeOfIconsCalculator();
+  
+   if(theEvent.getId() == 3 || theEvent.getId() == 4 || theEvent.getId() == 1 || theEvent.getId() == 2)
+   {
+     initScreenButtons.setAutoDraw(false);
+     if(theEvent.getId() == 2 || theEvent.getId() == 1)
+     {
+       d1.close();
+       drawAgain = true;
+       nOfIcons = 0;
+       windowInitializer();
+       sizeOfIconsCalculator();
+     }
+     else if (theEvent.getId() == 3 || theEvent.getId() == 4)
+     {
+       println("getting noficons from dropper");
+       drawAgain = true;
+       nOfIcons = (int) d1.getValue();
+       windowInitializer();
+       sizeOfIconsCalculator();
+     }
+   }
+   
+   if (theEvent.getId() == -1)
+   {
+     print("default event");
+     nOfIcons = 0;
+     windowInitializer();
+     sizeOfIconsCalculator();
+   }
+   
+    if (theEvent.getId() == 5)
+   {
+     drawAgain = true;
+     print("main menu is called");
+     nOfIcons = 0;
+     windowInitializer();
+     sizeOfIconsCalculator();
+     initScreenButtons.setAutoDraw(true);
+     cp5.setAutoDraw(false);
+     backToMainButton.setAutoDraw(false);
+     systemStarted = false;
+     experimentMode = false;
+     experimentResetButton.setAutoDraw(false);
+     stopExperiment();
+   }
+   
+     if (theEvent.getId() == 6)
+   {
+      runExperiment();
+   }
+   
 }
 
 

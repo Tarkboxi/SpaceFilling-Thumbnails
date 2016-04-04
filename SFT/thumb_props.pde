@@ -30,7 +30,7 @@ void SpaceFiller()
   if ( ( oldHeight ) < ( (displayBottomBorder - displayTopBorder ) * 0.45 ) )
   {
     
-      filledHeight = (displayBottomBorder - displayTopBorder ) * 0.45;
+      filledHeight = (displayBottomBorder - displayTopBorder ) * 0.52;
       filledWidth = filledHeight / aspectRatio;
       filledThumbNail[0] = filledWidth;
       filledThumbNail[1] = filledHeight;
