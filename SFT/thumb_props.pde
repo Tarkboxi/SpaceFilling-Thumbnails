@@ -27,10 +27,10 @@ void SpaceFiller()
   float oldHeight = listOfHeights.get(currentHoveredIcon) ;
   float filledHeight = 0;
   float filledWidth = 0;
-  if ( ( oldHeight ) < ( (displayBottomBorder - displayTopBorder ) * 0.45 ) )
+  if ( ( oldHeight ) < ( (displayBottomBorder - displayTopBorder ) * 0.35 ) )
   {
     
-      filledHeight = (displayBottomBorder - displayTopBorder ) * 0.52;
+      filledHeight = (displayBottomBorder - displayTopBorder ) * 0.45;
       filledWidth = filledHeight / aspectRatio;
       filledThumbNail[0] = filledWidth;
       filledThumbNail[1] = filledHeight;

@@ -88,10 +88,10 @@ void sizeOfIconsCalculator()
     {
       widthOfIcon = widthOfIcon * 0.95 ;
       heightOfIcon = widthOfIcon * aspectRatio;
-      System.out.println( (numberOfColumns * widthOfIcon)+"   ,   "+(displayRightBorder - displayLeftBorder));
+  //    System.out.println( (numberOfColumns * widthOfIcon)+"   ,   "+(displayRightBorder - displayLeftBorder));
     }
   }
-  System.out.println (numberOfColumns+" X "+numberOfRows);
+ // System.out.println (numberOfColumns+" X "+numberOfRows);
   numberOfPotentialCells = numberOfColumns * numberOfRows;  
   insertPositionY = (int) ( displayTopBorder+ ( (displayBottomBorder - displayTopBorder)/2 ) - (heightOfIcon/2) );
   insertPositionX = (int) ( displayLeftBorder+( (displayRightBorder - displayLeftBorder)/2 ) - (widthOfIcon/2)  );

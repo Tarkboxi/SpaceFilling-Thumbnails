@@ -16,9 +16,17 @@ boolean mouseInside = false;
        windowInitializer();
        sizeOfIconsCalculator();
      }
+      else if (theEvent.getId() == 3 || theEvent.getId() == 4)
+     {
+   //    println("getting noficons from dropper");
+       drawAgain = true;
+       nOfIcons = (int) d1.getValue();
+       windowInitializer();
+       sizeOfIconsCalculator();
+     }
      else if (theEvent.getId() == 3 || theEvent.getId() == 4)
      {
-       println("getting noficons from dropper");
+    //   println("getting noficons from dropper");
        drawAgain = true;
        nOfIcons = (int) d1.getValue();
        windowInitializer();
@@ -28,16 +36,35 @@ boolean mouseInside = false;
    
    if (theEvent.getId() == -1)
    {
-     print("default event");
+   //  print("default event");
      nOfIcons = 0;
      windowInitializer();
      sizeOfIconsCalculator();
    }
    
+    if (theEvent.getId() == 8)
+     {
+    //   println("entered!!");
+       drawAgain = true;
+       int modeNumber = (int) d2.getValue();
+       if (modeNumber == 0)
+       {
+    //     println("spatial is false");
+         spatialOn = false;
+       }
+       else
+       {
+   //      println("spatial is true");
+         spatialOn = true;
+       }
+       //windowInitializer();
+       //sizeOfIconsCalculator();
+     }
+     
     if (theEvent.getId() == 5)
    {
      drawAgain = true;
-     print("main menu is called");
+ //    print("main menu is called");
      nOfIcons = 0;
      windowInitializer();
      sizeOfIconsCalculator();
@@ -52,7 +79,13 @@ boolean mouseInside = false;
    
      if (theEvent.getId() == 6)
    {
-      runExperiment();
+      runExperiment1();
+      experimentMode = true;
+   }
+      if (theEvent.getId() == 7)
+   {
+      runExperiment2();
+      experimentMode = true;
    }
    
 }
