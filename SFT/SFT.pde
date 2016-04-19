@@ -15,7 +15,7 @@ float[] filledThumbNail = new float[5];
 PImage bgImage;
 boolean eraseFill = false;
 boolean zoomedMode = false;
-int currentClickedIcon = 999;
+int currentClickedIcon = 999;                                                                                                    
 boolean refreshScreenshot = true;
 boolean drawAgain = false;
 
