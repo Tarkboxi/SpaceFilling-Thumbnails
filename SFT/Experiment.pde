@@ -21,6 +21,8 @@ int experimentCounter =0;
 
 public void runExperiment1()
 {
+  listOfExperiment1Pages = new ArrayList<Integer>(); 
+
   listOfExperiment1Pages.add(3);
   listOfExperiment1Pages.add(15);
   listOfExperiment1Pages.add(17);
@@ -110,6 +112,8 @@ public void runExperiment1()
 
 public void runExperiment2()
 {
+  listOfExperiment1Pages = new ArrayList<Integer>(); 
+
   listOfExperiment1Pages.add(27);
   listOfExperiment1Pages.add(8);
   listOfExperiment1Pages.add(41);
@@ -215,7 +219,7 @@ public void runExperiment2()
 
 public void continueExpe()
 {
-  while(pageToLocateInList < listOfExperiment1Pages.size())
+  while(pageToLocateInList < listOfExperiment1Pages.size()-1)
   {
     experimentPage = experimentPage+1;
     firstExperimentInit = true;
